@@ -154,24 +154,23 @@ function arrayHunt() {
     Output all of the strings, but with all of their vowels
     in uppercase, to td#upperVowels
      */
-    for(let i = 0; i < myArray.length; i++) {
-        let newArray =[];
-        newArray[i] = myArray[i].replace("a","A");
-        newArray[i] = myArray[i].replace("e","E");
-        newArray[i] = myArray[i].replace("i","I");
-        newArray[i] = myArray[i].replace("o","O");
-        newArray[i] = myArray[i].replace("u","U");
-        $("#upperVowels").append(newArray[i] + " ")
 
+    for(let i = 0; i < myArray.length; i++) {
+        let newArray = myArray;
+        while(newArray[i].includes("a") || newArray[i].includes("e") || newArray[i].includes("i") || newArray[i].includes("o") || newArray[i].includes("u")){
+            newArray[i] = myArray[i].replace("a","A").replace("e","E").replace("i","I").replace("o","O").replace("u","U");
+        }
+        $("#upperVowels").append(newArray[i] + " ");
     }
 
     /*
     Output all of the strings in reverse order and separated by
     ' - ' to td#reverseDash
      */
+    {
     myArray.reverse();
     let val = myArray.join("-");
     $("#reverseDash").text(val);
-
+    }
 
 }
