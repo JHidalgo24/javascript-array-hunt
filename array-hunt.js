@@ -99,43 +99,79 @@ function arrayHunt() {
     let count = myArray.length;
     let last = myArray[count - 1];
 
-    $("td#firstLast").append(first + " " + last);
+    $("td#firstLast").text(first + " " + last);
 
 
     /*
     Find the first string that contains an 'n'.
     Output it to td#firstEnn
      */
-
+    for(let aValue of myArray){
+        if(aValue.includes("n")){
+            $("td#firstEnn").append(aValue)
+            break;
+        }
+    }
 
     /*
     Find all of the strings with less than 6 characters.
     Output them to td#lessThanSix
      */
+    for(let i=0; i < myArray.length; i++){
+        let aValue = myArray[i];
+        if(aValue.length <= 6){
+            $("#lessThanSix").append(" "+aValue);
+        }
+
+    }
 
 
     /*
     Find the longest string in the array.
     Output it to td#longName
      */
-
+    let longestVal = 0;
+    for (let i = 0; i < myArray.length; i++) {
+        if (myArray[i].length > longestVal) {
+            longestVal = myArray[i].length;
+            $("#longName").text(myArray[i]);
+        }
+    }
 
     /*
     Find all of the strings that do not contain the letter 's'.
     Output them to td#noEss
      */
+    for(let i = 0; i < myArray.length; i++) {
+    if(myArray[i].includes("s") ){
 
+    }
+    else
+        $("#noEss").append(myArray[i] + "  ");
+    }
 
     /*
     Output all of the strings, but with all of their vowels
     in uppercase, to td#upperVowels
      */
+    for(let i = 0; i < myArray.length; i++) {
+        let newArray =[];
+        newArray[i] = myArray[i].replace("a","A");
+        newArray[i] = myArray[i].replace("e","E");
+        newArray[i] = myArray[i].replace("i","I");
+        newArray[i] = myArray[i].replace("o","O");
+        newArray[i] = myArray[i].replace("u","U");
+        $("#upperVowels").append(newArray[i] + " ")
 
+    }
 
     /*
     Output all of the strings in reverse order and separated by
     ' - ' to td#reverseDash
      */
+    myArray.reverse();
+    let val = myArray.join("-");
+    $("#reverseDash").text(val);
 
 
 }
